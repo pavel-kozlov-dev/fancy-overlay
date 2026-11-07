@@ -53,7 +53,7 @@ RESTRICT="test"
 # (Gio/GLib in mpris.py) and the tray icon: the bundled pystray is the
 # systray framework, handing the icon to the desktop through the
 # AppIndicator typelib.
-# dev-libs/libayatana-appindicator[introspection] ships the
+# dev-libs/libayatana-appindicator ships the
 # AyatanaAppIndicator3 typelib that pystray's SNI/GTK backends load
 # through gi.
 # dev-python/six and dev-python/python-xlib are the runtime dependencies
@@ -68,7 +68,7 @@ RDEPEND="
 	dev-python/six
 	dev-python/urllib3
 	dev-python/websocket-client
-	dev-libs/libayatana-appindicator[introspection]
+	dev-libs/libayatana-appindicator
 "
 BDEPEND=">=dev-python/setuptools-77"
 
@@ -82,7 +82,7 @@ python_compile() {
 	# the legacy setuptools backend it falls back on.
 	(
 		cd "${MY_AP_S}" || die
-		[[ -f setup.py ]] || printf 'from setuptools import setup\nsetup()\n' > setup.py
+		[[ -f setup.py ]] || printf 'from setuptools import setup\nsetup()\n' >setup.py
 		distutils_pep517_install "${BUILD_DIR}/install"
 	)
 
